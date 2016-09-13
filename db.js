@@ -2,7 +2,8 @@ var development = require('./knexfile').development
 var knex = require ('knex')(development)
 
 module.exports = {
-  getWombles: getWombles
+  getWombles: getWombles,
+  getWombleRubbish: getWombleRubbish
 }
 
 function getWombles () {
@@ -11,8 +12,8 @@ function getWombles () {
     .select('wombles.name', 'characteristics.description as description')
 }
 
-//
-//
-// .then(function (data) {
-//   res.render(data)
-// }))
+function getWombleRubbish () {
+  return knex('wombles')
+    .join('rubbish', 'wombles.id', '=', 'rubbish.id')
+    .select('wombles.name', 'rubbish.name as rubbish')
+}

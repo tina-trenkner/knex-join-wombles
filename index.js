@@ -24,10 +24,4 @@ app.listen(PORT, function () {
 })
 
 app.get('/view', routes.getWombles)
-
-// app.get('/assignments', knex('wombles')
-//   .join('rubbish', 'wombles.id', '=', 'rubbish.id')
-//   .select('wombles.name', 'rubbish.name as rubbish')
-//   .then(function (data) {
-//     res.render(data)
-//   }))
+app.get('/assignments', routes.getWombleRubbish)
